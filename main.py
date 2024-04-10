@@ -66,8 +66,8 @@ gun_sound = pygame.mixer.Sound(
     os.path.join('sound', 'pow1.wav'))
 shield_sound = pygame.mixer.Sound(
     os.path.join('sound', 'pow0.wav'))
-pygame.mixer.music.load(os.path.join('sound', 'background.ogg'))
-pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.load(os.path.join('sound', 'Sunny.mp3'))
+pygame.mixer.music.set_volume(3)
 pygame.mixer.music.play(-1)
 # score board
 score = 0
@@ -182,13 +182,26 @@ class Player(pygame.sprite.Sprite):
                 bullets.add(bullet)
                 bullet_shoot.play()
             else:
-                bullet1 = Bullet(self.rect.right, self.rect.centery)
-                all_sprite.add(bullet1)
-                bullets.add(bullet1)
-                bullet_shoot.play()
-                bullet2 = Bullet(self.rect.left, self.rect.centery)
-                all_sprite.add(bullet2)
-                bullets.add(bullet2)
+                if self.gun == 2:
+                    bullet1 = Bullet(self.rect.right, self.rect.centery)
+                    all_sprite.add(bullet1)
+                    bullets.add(bullet1)
+                    bullet_shoot.play()
+                    bullet2 = Bullet(self.rect.left, self.rect.centery)
+                    all_sprite.add(bullet2)
+                    bullets.add(bullet2)
+                else:
+                    bullet = Bullet(self.rect.centerx, self.rect.top)
+                    all_sprite.add(bullet)
+                    bullets.add(bullet)
+                    bullet_shoot.play()
+                    bullet1 = Bullet(self.rect.right, self.rect.centery)
+                    all_sprite.add(bullet1)
+                    bullets.add(bullet1)
+                    bullet_shoot.play()
+                    bullet2 = Bullet(self.rect.left, self.rect.centery)
+                    all_sprite.add(bullet2)
+                    bullets.add(bullet2)
 
     def hide(self):
         self.hidden = True
